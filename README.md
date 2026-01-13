@@ -126,7 +126,7 @@ Bu proje eğitim amaçlıdır.
 
 ## 👥 Yazar
 
-Üniversite Yönetmelik Bot Team
+Birkan USTA - Sedanur UZUN
 
 ## 🙏 Teşekkürler
 
