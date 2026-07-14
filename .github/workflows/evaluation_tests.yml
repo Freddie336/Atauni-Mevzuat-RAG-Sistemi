@@ -1,0 +1,29 @@
+name: Evaluation Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Run evaluation dataset tests
+        run: python -m unittest discover -s tests -p "test_evaluation_data.py" -v
+
+      - name: Compile evaluation modules
+        run: python -m compileall -q src/evaluation scripts/evaluate_rag.py

@@ -25,8 +25,8 @@
 
 1. **Repository'yi klonlayın:**
 ```bash
-git clone <repository-url>
-cd universite-yonetmelik-bot
+git clone https://github.com/Freddie336/Atauni-Mevzuat-RAG-Sistemi.git
+cd Atauni-Mevzuat-RAG-Sistemi
 ```
 
 2. **Virtual environment oluşturun:**
@@ -104,6 +104,24 @@ pytest tests/
 # Belirli bir test
 pytest tests/test_retrieval.py
 ```
+
+### RAG kalite değerlendirmesi
+
+Toplanan cevaplar `question`, `answer`, `contexts` ve `ground_truth` alanlarını
+içeren JSONL kayıtları olarak saklanır. Örnek format
+`evaluation/golden_dataset.example.jsonl` dosyasındadır.
+
+```bash
+pip install -r requirements-evaluation.txt
+python scripts/evaluate_rag.py \
+  --input evaluation/golden_dataset.example.jsonl \
+  --output-dir reports/evaluation
+```
+
+Komut; faithfulness, answer relevancy, context precision ve context recall
+metriklerini hesaplar. Ayrıntılı sonuçlar CSV, özet metrikler JSON olarak
+`reports/evaluation/` altında üretilir. Değerlendirme sırasında
+`GROQ_API_KEY` gerekir; anahtar hiçbir zaman repoya eklenmemelidir.
 
 ## 📚 Dokümantasyon
 
